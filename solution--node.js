@@ -10,8 +10,7 @@ const gridSize = {
 	y: cmdLines[0].split(' ')[1],
 }
 
-// 
-const roverCoords = [
+const roverPositions = [
 	cmdLines[1],
 ];
 
@@ -19,22 +18,29 @@ const moveCmds = cmdLines[2].split('');
 
 // Do move
 moveCmds.forEach(cmd => {
-	console.log('running move cmd', cmd);
-	const lastPos = roverCoords[roverCoords.length - 1];
-	console.log('lastPos', lastPos);
+	console.log('running move cmd:', cmd);
+	const lastPos = roverPositions[roverPositions.length - 1];
+	console.log('lastPos:', lastPos);
 
 	const newPos = move(cmd, lastPos)
-	roverCoords.push(newPos);
+	roverPositions.push(newPos);
 	
-	console.log('newPos', newPos);
+	console.log('newPos:', newPos);
 });
 
-console.log('FINAL POS', roverCoords[roverCoords.length - 1]);
+console.log('=================');
+console.log('FINAL POS:', roverPositions[roverPositions.length - 1]);
 
 /**
  * Helper functions.
  */
 
+/**
+ * Takes a single movement command and current position, and returns new position.
+ * @param {String} cmd - can be L (turn left), R (turn right), M (move 1 unit in direction facing)
+ * @param {String} posStr - x, y, dir (N,E,S,W) coords, as space separated string.
+ * @returns {String} - New x, y, dir (N,E,S,W) coords, as space separated string.
+ */
 function move(cmd, posStr) {
 	const pos = posStrToObj(posStr);
 	const dirs = ['N', 'E', 'S', 'W'];
@@ -66,7 +72,6 @@ function move(cmd, posStr) {
 
 	return posObjToStr(pos);
 }
-
 
 function posStrToObj(posStr) {
 	const parts = posStr.split(' ');
