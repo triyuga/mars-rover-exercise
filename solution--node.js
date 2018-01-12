@@ -45,13 +45,14 @@ console.log('FINAL POS:', roverPositions[roverPositions.length - 1]);
 function move(cmd, posStr) {
 	const pos = posStrToObj(posStr);
 	const dirs = ['N', 'E', 'S', 'W'];
+	const dirsFlip = arrayFlip(dirs);
 
 	switch (cmd) {
 		case 'L':
-			pos.dir = (arrayFlip(dirs)[pos.dir]-1 >= 0) ? dirs[arrayFlip(dirs)[pos.dir]-1] : dirs[3];
+			pos.dir = (dirsFlip[pos.dir]-1 >= 0) ? dirs[dirsFlip[pos.dir]-1] : dirs[3];
 			break;
 		case 'R':
-			pos.dir = (arrayFlip(dirs)[pos.dir]+1 <= 3) ? dirs[arrayFlip(dirs)[pos.dir]+1] : dirs[0];
+			pos.dir = (dirsFlip[pos.dir]+1 <= 3) ? dirs[dirsFlip[pos.dir]+1] : dirs[0];
 			break;
 		case 'M':
 			switch (pos.dir) {
