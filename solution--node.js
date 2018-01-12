@@ -10,6 +10,7 @@ const gridSize = {
 	y: cmdLines[0].split(' ')[1],
 }
 
+// 
 const roverCoords = [
 	cmdLines[1],
 ];
