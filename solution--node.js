@@ -10,13 +10,14 @@ const gridSize = {
 	y: cmdLines[0].split(' ')[1],
 }
 
+// Store for rover position states.
 const roverPositions = [
 	cmdLines[1],
 ];
 
 const moveCmds = cmdLines[2].split('');
 
-// Do move
+// Execute move commands.
 moveCmds.forEach(cmd => {
 	console.log('running move cmd:', cmd);
 	const lastPos = roverPositions[roverPositions.length - 1];
