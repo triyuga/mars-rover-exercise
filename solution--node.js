@@ -1,14 +1,14 @@
-const cmd = 
+const nasaCmd = 
 `5 5
 1 2 N
-LMLMLMLMM`
+LMLMLMLMM`;
 
-const cmdLines = cmd.split('\n')
+const cmdLines = nasaCmd.split('\n');
 
 const gridSize = {
 	x: cmdLines[0].split(' ')[0],
 	y: cmdLines[0].split(' ')[1],
-}
+};
 
 // Store for rover position states.
 const roverPositions = [
@@ -23,7 +23,7 @@ moveCmds.forEach(cmd => {
 	const lastPos = roverPositions[roverPositions.length - 1];
 	console.log('lastPos:', lastPos);
 
-	const newPos = move(cmd, lastPos)
+	const newPos = move(cmd, lastPos);
 	roverPositions.push(newPos);
 	
 	console.log('newPos:', newPos);
@@ -80,7 +80,7 @@ function posStrToObj(posStr) {
 		x: parseInt(parts[0]),
 		y: parseInt(parts[1]),
 		dir: parts[2],
-	}
+	};
 }
 
 function posObjToStr(posObj) {
